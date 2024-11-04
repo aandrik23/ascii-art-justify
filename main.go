@@ -54,6 +54,11 @@ func main() {
 
 	sepText := strings.Split(text, "\\n")
 
+	if len(sepText) == 0 {
+		fmt.Println("The text is nil")
+		return
+	}
+
 	file, err := os.ReadFile("banners/" + styleBanner + ".txt")
 	if err != nil {
 		fmt.Println(" banner does not exist.")
@@ -66,7 +71,7 @@ func main() {
 		return
 	}
 
-	fmt.Println("Max terminal width:", width)
+	// fmt.Println("Max terminal width:", width)
 
 	str := string(file)
 	str = strings.Replace(str, "\r\n", "\n", -1)
@@ -78,4 +83,5 @@ func main() {
 
 		funcs.PrintJustify(sepText, lines, align, width)
 	}
+
 }
