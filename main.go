@@ -10,9 +10,13 @@ import (
 )
 
 func main() {
+	if len(os.Args) < 2 {
+		fmt.Println("ERROR! Usage: go run . [OPTION] [STRING] [BANNER] \nEX: go run . --align=<TYPE> something standard ")
+		return
+	}
 	// Check if the number of command-line arguments is correct
-	if len(os.Args) < 2 || len(os.Args) > 4 {
-		fmt.Println("ERROR! Usage: go run . [OPTION] [STRING] [BANNER] \nEX: go run . --align=<type> something standard")
+	if len(os.Args) > 4 {
+		fmt.Printf("ERROR! Usage: go run . [OPTION] [STRING] [BANNER] \nEX: go run . --align=%v something standard \n", os.Args[2])
 		return
 	}
 	var text string
@@ -27,7 +31,7 @@ func main() {
 		hasAlign = true
 
 		if !strings.HasPrefix(align, "--align=") {
-			fmt.Println("ERROR! Usage: go run . [OPTION] [STRING] [BANNER] \nEX: go run . --align=<type> something standard")
+			fmt.Printf("ERROR! Usage: go run . [OPTION] [STRING] [BANNER] \nEX: go run . --align=%v something standard \n", os.Args[2])
 			return
 		}
 
