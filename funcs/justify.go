@@ -50,29 +50,6 @@ func PrintAlign(sentences []string, banner []string, align string, width int) {
 				asciiLines[h-1] = padding + strings.Join(wordLines, "")
 			case "left":
 				asciiLines[h-1] = strings.Join(wordLines, "")
-			case "justify":
-				if lineWidth < width && len(wordLines) > 1 {
-					// Justify if line width is less than target and multiple words
-					spaceNeeded := width - lineWidth
-					spacesBetweenWords := len(wordLines) - 1
-					extraSpaces := spaceNeeded / spacesBetweenWords
-					remainderSpaces := spaceNeeded % spacesBetweenWords
-					// Build the justified line by adding extra spaces between words
-					justifiedLine := ""
-					for i, wordAscii := range wordLines {
-						justifiedLine += wordAscii
-						if i < spacesBetweenWords { // Add spaces only between words
-							justifiedLine += strings.Repeat(" ", extraSpaces)
-							if i < remainderSpaces { // Distribute remainder spaces
-								justifiedLine += " "
-							}
-						}
-					}
-					asciiLines[h-1] = justifiedLine
-				} else {
-					// Left-align if the width is already met or single word
-					asciiLines[h-1] = strings.Join(wordLines, "")
-				}
 			default:
 				asciiLines[h-1] = strings.Join(wordLines, "")
 			}
