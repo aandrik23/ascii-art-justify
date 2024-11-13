@@ -12,7 +12,7 @@ func PrintAsciiArt(sentences []string, banner []string) {
 		}
 		for h := 1; h < 9; h++ { // ASCII art character height is 8
 			for k := 0; k < len(word); k++ {
-				for lineIndex, line := range word {
+				for lineIndex, line := range banner {
 					if lineIndex == (int(word[k])-32)*9+h { // Map the character to ASCII art lines
 						fmt.Print(line) // Print the corresponding line for the character
 					}

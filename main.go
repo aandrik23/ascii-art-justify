@@ -83,9 +83,10 @@ func main() {
 	if !hasAlign {
 
 		funcs.PrintAsciiArt(sepText, lines)
-	} else {
-
+	} else if align == "justify" {
 		funcs.PrintJustify(sepText, lines, align, width)
+	} else {
+		funcs.PrintAlign(sepText, lines, align, width)
 	}
 
 }
